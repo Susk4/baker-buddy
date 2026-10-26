@@ -9,7 +9,7 @@
       "googleSignIn": {
         "oAuthBrandDisplayName": "Baker Buddy",
         "supportEmail": "balazs.henrik0103@gmail.com",
-        "authorizedRedirectUris": []
+        "authorizedRedirectUris": ["https://baker-buddy-omega.vercel.app/__/auth/handler"]
       }
     }
   }
