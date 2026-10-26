@@ -1,0 +1,28 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isOwner(uid) {
+      return request.auth != null && request.auth.uid == uid;
+    }
+
+    function validRecipe(d) {
+      return d.keys().hasOnly(['title', 'notes', 'input', 'result', 'createdAt', 'updatedAt'])
+        && d.title is string && d.title.size() > 0 && d.title.size() <= 100
+        && d.notes is string && d.notes.size() <= 5000
+        && d.input is map && d.result is map;
+    }
+
+    match /users/{uid} {
+      allow read, delete: if isOwner(uid);
+      allow create, update: if isOwner(uid)
+        && request.resource.data.keys().hasOnly(['defaults', 'updatedAt'])
+        && request.resource.data.defaults is map;
+
+      match /recipes/{recipeId} {
+        allow read, delete: if isOwner(uid);
+        allow create, update: if isOwner(uid) && validRecipe(request.resource.data);
+      }
+    }
+  }
+}

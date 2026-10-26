@@ -30,3 +30,7 @@ firebase-debug.log*
 firestore-debug.log*
 .env*.local
 .claude/
+
+.vercel
+.env*
+!.env.example

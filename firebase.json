@@ -1,0 +1,16 @@
+{
+  "firestore": {
+    "database": "(default)",
+    "location": "eur3",
+    "rules": "firestore.rules"
+  },
+  "auth": {
+    "providers": {
+      "googleSignIn": {
+        "oAuthBrandDisplayName": "Baker Buddy",
+        "supportEmail": "balazs.henrik0103@gmail.com",
+        "authorizedRedirectUris": []
+      }
+    }
+  }
+}

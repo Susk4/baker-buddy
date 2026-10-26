@@ -1,0 +1,8 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "vite",
+  "rewrites": [
+    { "source": "/__/auth/:path*", "destination": "https://baker-buddy-hb.firebaseapp.com/__/auth/:path*" },
+    { "source": "/__/firebase/:path*", "destination": "https://baker-buddy-hb.firebaseapp.com/__/firebase/:path*" }
+  ]
+}
